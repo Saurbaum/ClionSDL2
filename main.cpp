@@ -1,10 +1,10 @@
 #include <stdlib.h>
-#include <SDL2/SDL.h>
-#include <unistd.h>
+#include <SDL.h>
 #include <chrono>
 #include <iostream>
+#include <stdio.h>
 
-#define FRAMERATE 60.0f
+#define FRAME_RATE 60.0f
 
 int main ( int argc, char** argv )
 {
@@ -71,7 +71,7 @@ int main ( int argc, char** argv )
 
         float waitTime = std::chrono::duration_cast<std::chrono::microseconds>(now - lastUpdate).count();
 
-        if (waitTime > 1000000/FRAMERATE)
+        if (waitTime > 1000000/FRAME_RATE)
         {
             // message processing loop
             SDL_Event event;
@@ -116,13 +116,13 @@ int main ( int argc, char** argv )
         }
         else
         {
-            if (waitTime - 1000000/FRAMERATE > 12)
+            if (waitTime - 1000000/FRAME_RATE > 12)
             {
                 SDL_Delay(10);
             }
             else
             {
-                sleep(0);
+//                sleep(0);
             }
         }
     } // end main loop
