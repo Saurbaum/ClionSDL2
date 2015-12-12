@@ -2,7 +2,6 @@
 #include <SDL.h>
 #include <chrono>
 #include <iostream>
-#include <stdio.h>
 
 #define FRAME_RATE 60.0f
 
@@ -50,14 +49,14 @@ int main ( int argc, char** argv )
     SDL_Texture* texture = SDL_CreateTextureFromSurface(sdlRenderer, bmp);
 
     // centre the bitmap on screen
-    SDL_Rect dstrect, displayRect;
+    SDL_Rect textureRect, displayRect;
 
     SDL_GetDisplayBounds(0, &displayRect);
-    dstrect.x = (displayRect.w - bmp->w) / 2;
-    dstrect.y = (displayRect.h - bmp->h) / 2;
+    textureRect.x = (displayRect.w - bmp->w) / 2;
+    textureRect.y = (displayRect.h - bmp->h) / 2;
 
-    dstrect.w = bmp->w;
-    dstrect.h = bmp->h;
+    textureRect.w = bmp->w;
+    textureRect.h = bmp->h;
 
     std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
     std::chrono::high_resolution_clock::time_point lastUpdate = start;
@@ -85,7 +84,7 @@ int main ( int argc, char** argv )
                         done = true;
                         break;
 
-                        // check for keypresses
+                        // check for key presses
                     case SDL_KEYDOWN:
                     {
                        // exit if ESCAPE is pressed
@@ -105,7 +104,7 @@ int main ( int argc, char** argv )
             SDL_SetRenderDrawColor(sdlRenderer, 0, 0, 0, 255);
             SDL_RenderClear(sdlRenderer);
 
-            SDL_RenderCopy(sdlRenderer, texture, NULL, &dstrect);
+            SDL_RenderCopy(sdlRenderer, texture, NULL, &textureRect);
 
             // DRAWING ENDS HERE
             SDL_RenderPresent(sdlRenderer);
