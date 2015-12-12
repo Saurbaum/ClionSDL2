@@ -7,20 +7,23 @@
 
 int main ( int argc, char** argv )
 {
+    for (auto i = 0; i < argc; ++i)
+    {
+        std::cout << "Arg " << i << ": " << argv[i] << std::endl;
+    }
+
     SDL_version compiled;
     SDL_version linked;
 
     SDL_VERSION(&compiled);
     SDL_GetVersion(&linked);
-    printf("We compiled against SDL version %d.%d.%d ...\n",
-            compiled.major, compiled.minor, compiled.patch);
-    printf("But we are linking against SDL version %d.%d.%d.\n",
-            linked.major, linked.minor, linked.patch);
+    std::cout << "We compiled against SDL version " << compiled.major << "." << compiled.minor << "." << compiled.patch << std::endl;
+    std::cout << "But we are linking against SDL version " << linked.major << "." << linked.minor << "." << linked.patch << std::endl;
 
     // initialize SDL video
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
-        printf( "Unable to init SDL: %s\n", SDL_GetError() );
+        std::cout << "Unable to init SDL: " << SDL_GetError() << std::endl;
         return 1;
     }
 
@@ -34,7 +37,7 @@ int main ( int argc, char** argv )
 
     if ( !sdlWindow )
     {
-        printf("Unable to set 640x480 video: %s\n", SDL_GetError());
+        std::cout << "Unable to set 640x480 video: " << SDL_GetError() << std::endl;
         return 1;
     }
 
@@ -42,7 +45,7 @@ int main ( int argc, char** argv )
     SDL_Surface* bmp = SDL_LoadBMP("image.bmp");
     if (!bmp)
     {
-        printf("Unable to load bitmap: %s\n", SDL_GetError());
+        std::cout << "Unable to load bitmap: " << SDL_GetError() << std::endl;
         return 1;
     }
 
@@ -137,6 +140,6 @@ int main ( int argc, char** argv )
     std::cout << "Average Frame rate: " << (updateCount / (std::chrono::duration_cast<std::chrono::milliseconds>(now - start).count()/1000.0f)) << std::endl;
 
     // all is well ;)
-    printf("Exited cleanly\n");
+    std::cout << "Exited cleanly" << std::endl;
     return 0;
 }
