@@ -122,10 +122,6 @@ int main ( int argc, char** argv )
             {
                 SDL_Delay(10);
             }
-            else
-            {
-//                sleep(0);
-            }
         }
     } // end main loop
 
