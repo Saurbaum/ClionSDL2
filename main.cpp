@@ -20,8 +20,8 @@ int main ( int argc, char** argv )
 
     SDL_VERSION(&compiled);
     SDL_GetVersion(&linked);
-    std::cout << "We compiled against SDL version " << compiled.major << "." << compiled.minor << "." << compiled.patch << std::endl;
-    std::cout << "But we are linking against SDL version " << linked.major << "." << linked.minor << "." << linked.patch << std::endl;
+    std::cout << "We compiled against SDL version " << static_cast<int>(compiled.major) << "." << static_cast<int>(compiled.minor) << "." << static_cast<int>(compiled.patch) << std::endl;
+    std::cout << "But we are linking against SDL version " << static_cast<int>(linked.major) << "." << static_cast<int>(linked.minor) << "." << static_cast<int>(linked.patch) << std::endl;
 
     // initialize SDL video
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
