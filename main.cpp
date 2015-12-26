@@ -2,6 +2,9 @@
 #include <SDL.h>
 #include <chrono>
 #include <iostream>
+#include "Player/Player.h"
+#include "World/World.h"
+#include "StateController/StateController.h"
 
 #define FRAME_RATE 60.0f
 
@@ -41,25 +44,9 @@ int main ( int argc, char** argv )
         return 1;
     }
 
-    // load an image
-    SDL_Surface* bmp = SDL_LoadBMP("image.bmp");
-    if (!bmp)
-    {
-        std::cout << "Unable to load bitmap: " << SDL_GetError() << std::endl;
-        return 1;
-    }
-
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(sdlRenderer, bmp);
-
-    // centre the bitmap on screen
-    SDL_Rect textureRect, displayRect;
-
-    SDL_GetDisplayBounds(0, &displayRect);
-    textureRect.x = (displayRect.w - bmp->w) / 2;
-    textureRect.y = (displayRect.h - bmp->h) / 2;
-
-    textureRect.w = bmp->w;
-    textureRect.h = bmp->h;
+    World world(sdlRenderer);
+    StateController stateController;
+    stateController.CreateMachine((IStateMachine *) new Player(sdlRenderer));
 
     std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
     std::chrono::high_resolution_clock::time_point lastUpdate = start;
@@ -101,13 +88,14 @@ int main ( int argc, char** argv )
                 } // end switch
             } // end of message processing
 
+            stateController.Update(waitTime);
+
             // DRAWING STARTS HERE
 
             // clear screen
-            SDL_SetRenderDrawColor(sdlRenderer, 0, 0, 0, 255);
-            SDL_RenderClear(sdlRenderer);
+            world.Render();
 
-            SDL_RenderCopy(sdlRenderer, texture, NULL, &textureRect);
+            stateController.Render();
 
             // DRAWING ENDS HERE
             SDL_RenderPresent(sdlRenderer);
@@ -124,9 +112,6 @@ int main ( int argc, char** argv )
             }
         }
     } // end main loop
-
-    // free loaded bitmap
-    SDL_FreeSurface(bmp);
 
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
 

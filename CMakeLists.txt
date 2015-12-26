@@ -12,7 +12,7 @@ include_directories(${SDL2_INCLUDE_DIR})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_EXE_LINKER_FLAGS "${SDL2_LINKER}")
 
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp Player/Player.cpp Player/Player.h World/World.cpp World/World.h Interface/IStateMachine.h StateController/StateController.cpp StateController/StateController.h)
 add_executable(sdlTest ${SOURCE_FILES})
 
 target_link_libraries(sdlTest ${SDL2_LIBRARY})
