@@ -6,7 +6,7 @@
 #include <SDL_render.h>
 #include "Player.h"
 
-Player::Player(SDL_Renderer* sdlRenderer) : m_xPos(0), m_yPos(0), m_xVelocity(24.0f), m_yVelocity(24.0f) {
+Player::Player(SDL_Renderer* sdlRenderer) : m_xPos(0), m_yPos(0), m_xVelocity(78.0f), m_yVelocity(42.0f) {
     m_sdlRenderer = sdlRenderer;
     LoadTexture("image.bmp");
 }

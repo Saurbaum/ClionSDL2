@@ -4,11 +4,35 @@
 
 #include "World.h"
 
-World::World(SDL_Renderer *sdlRenderer) {
+World::World(SDL_Renderer *sdlRenderer) : m_increase(true) {
     m_sdlRenderer = sdlRenderer;
 }
 
 void World::Render() {
-    SDL_SetRenderDrawColor(m_sdlRenderer, 0, 0, 0, 255);
+    m_red = UpdateColour(m_red);
+    m_green = UpdateColour(m_green);
+    m_blue = UpdateColour(m_blue);
+
+    SDL_SetRenderDrawColor(m_sdlRenderer, m_red, m_green, m_blue, 255);
     SDL_RenderClear(m_sdlRenderer);
+}
+
+Uint8 World::UpdateColour(Uint8 colour) {
+    if (m_increase) {
+        colour++;
+    } else {
+        colour--;
+    }
+
+    if (colour >= 255) {
+        colour = 255;
+        m_increase = false;
+    }
+
+    if (colour <= 0) {
+        colour = 0;
+        m_increase = true;
+    }
+
+    return colour;
 }
