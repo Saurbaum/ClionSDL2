@@ -30,9 +30,6 @@ int main ( int argc, char** argv )
         return 1;
     }
 
-    // make sure SDL cleans up before exit
-    atexit(SDL_Quit);
-
     // create a new window
     SDL_Window *sdlWindow;
     SDL_Renderer *sdlRenderer;
@@ -114,6 +111,8 @@ int main ( int argc, char** argv )
             }
         }
     } // end main loop
+
+    SDL_Quit();
 
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
 
