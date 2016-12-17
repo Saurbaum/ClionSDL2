@@ -38,6 +38,8 @@ int main ( int argc, char** argv )
     SDL_Renderer *sdlRenderer;
     SDL_CreateWindowAndRenderer(0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP, &sdlWindow, &sdlRenderer);
 
+    SDL_GL_SetSwapInterval(1);
+
     if ( !sdlWindow )
     {
         std::cout << "Unable to set 640x480 video: " << SDL_GetError() << std::endl;
