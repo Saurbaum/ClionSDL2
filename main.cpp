@@ -105,7 +105,7 @@ int main ( int argc, char** argv )
         }
         else
         {
-            if (waitTime - 1000000/FRAME_RATE > 12)
+            if (waitTime - 1000000/FRAME_RATE > 15)
             {
                 SDL_Delay(10);
             }
