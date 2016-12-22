@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+
+# Output
+build/
+.idea/workspace.xml
