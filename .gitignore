@@ -30,3 +30,5 @@
 # Output
 build/
 .idea/workspace.xml
+CMakeFiles/
+cmake-build-debug/
