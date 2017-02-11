@@ -32,3 +32,5 @@ build/
 .idea/workspace.xml
 CMakeFiles/
 cmake-build-debug/
+/build/
+.idea/.name
