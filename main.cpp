@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <SDL.h>
 #include <chrono>
 #include <iostream>
