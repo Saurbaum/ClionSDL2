@@ -28,5 +28,9 @@
 *.app
 
 \.idea/
-
 cmake-build-debug/
+# Output
+build/
+CMakeFiles/
+cmake-build-debug/
+/build/
