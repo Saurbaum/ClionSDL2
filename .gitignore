@@ -27,10 +27,10 @@
 *.out
 *.app
 
+\.idea/
+cmake-build-debug/
 # Output
 build/
-.idea/workspace.xml
 CMakeFiles/
 cmake-build-debug/
 /build/
-.idea/.name
