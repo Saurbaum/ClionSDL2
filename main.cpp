@@ -66,25 +66,19 @@ int main ( int argc, char** argv )
             while (SDL_PollEvent(&event))
             {
                 // check for messages
-                switch (event.type)
-                {
-                    // exit if the window is closed
-                    case SDL_QUIT:
+
+                // exit if the window is closed
+                if (event.type == SDL_QUIT) {
+                    done = true;
+                }
+
+                // check for key presses
+                if (event.type == SDL_KEYDOWN) {
+                   // exit if ESCAPE is pressed
+                   if (event.key.keysym.sym == SDLK_ESCAPE)
                         done = true;
-                        break;
-
-                        // check for key presses
-                    case SDL_KEYDOWN:
-                    {
-                       // exit if ESCAPE is pressed
-                       if (event.key.keysym.sym == SDLK_ESCAPE)
-                            done = true;
-                       break;
-                    }
-
-                    default:
-                        break;
-                } // end switch
+                   break;
+                }
             } // end of message processing
 
             stateController.Update(waitTime);
@@ -107,7 +101,8 @@ int main ( int argc, char** argv )
         {
             if (waitTime - 1000000/FRAME_RATE > 15)
             {
-                SDL_Delay(10);
+                Uint32 delay = 10;
+                SDL_Delay(delay);
             }
         }
     } // end main loop
