@@ -5,10 +5,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <string>
 #include <memory>
 #include "../Interface/IStateMachine.h"
 
-class Player : IStateMachine {
+class Player : public IStateMachine {
 public:
     Player(SDL_Renderer* sdlRenderer);
     ~Player();

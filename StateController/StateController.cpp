@@ -9,9 +9,6 @@ StateController::StateController() {
 }
 
 StateController::~StateController() {
-    for(auto iterator = m_machines.begin(); iterator != m_machines.end(); ++iterator) {
-        delete (*iterator);
-    }
     m_machines.clear();
 }
 
@@ -21,7 +18,7 @@ void StateController::Update(float updateInterval) {
     }
 }
 
-void StateController::CreateMachine(IStateMachine* machine) {
+void StateController::CreateMachine(std::shared_ptr<IStateMachine> machine) {
     m_machines.push_back(machine);
 }
 

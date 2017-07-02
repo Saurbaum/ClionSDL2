@@ -14,11 +14,11 @@ public:
     ~StateController();
 
     void Update(float updateInterval);
-    void CreateMachine(IStateMachine* machine);
+    void CreateMachine(std::shared_ptr<IStateMachine> machine);
     void Render();
 
 private:
-    std::vector<IStateMachine*> m_machines;
+    std::vector<std::shared_ptr<IStateMachine>> m_machines;
 };
 
 
