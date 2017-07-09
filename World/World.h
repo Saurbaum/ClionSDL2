@@ -18,9 +18,9 @@ public:
 private:
     SDL_Renderer* m_sdlRenderer;
 
-    Uint8 m_red = 70;
-    Uint8 m_green = 48;
-    Uint8 m_blue = 63;
+    Uint8 m_red;
+    Uint8 m_green;
+    Uint8 m_blue;
 
     bool m_increase;
 

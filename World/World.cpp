@@ -4,7 +4,7 @@
 
 #include "World.h"
 
-World::World(SDL_Renderer *sdlRenderer) : m_increase(true) {
+World::World(SDL_Renderer *sdlRenderer) : m_increase(true), m_red(0), m_green(128), m_blue(0) {
     m_sdlRenderer = sdlRenderer;
 }
 
