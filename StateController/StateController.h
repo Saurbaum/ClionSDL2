@@ -5,6 +5,7 @@
 #ifndef STATE_CONTROLLER_H
 #define STATE_CONTROLLER_H
 
+#include <memory>
 #include <vector>
 #include "../Interface/IStateMachine.h"
 
