@@ -11,11 +11,12 @@
 
 class Player : public IStateMachine {
 public:
-    Player(SDL_Renderer* sdlRenderer);
+    explicit Player(SDL_Renderer* sdlRenderer);
     ~Player();
 
-    virtual void Render();
-    virtual void Update(float updateInterval);
+    void Render() override;
+
+    void Update(float updateInterval) override;
 
 private:
     SDL_Surface* m_surface;

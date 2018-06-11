@@ -44,7 +44,7 @@ int main ( int argc, char** argv )
 
     World world(sdlRenderer);
     StateController stateController;
-    stateController.CreateMachine(std::unique_ptr<IStateMachine>(new Player(sdlRenderer)));
+    stateController.CreateMachine(std::shared_ptr<IStateMachine>(new Player(sdlRenderer)));
 
     std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
     std::chrono::high_resolution_clock::time_point lastUpdate = start;

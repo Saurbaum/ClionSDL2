@@ -4,17 +4,15 @@
 
 #include "StateController.h"
 
-StateController::StateController() {
-
-}
+StateController::StateController() = default;
 
 StateController::~StateController() {
     m_machines.clear();
 }
 
 void StateController::Update(float updateInterval) {
-    for(auto iterator = m_machines.begin(); iterator != m_machines.end(); ++iterator) {
-        (*iterator)->Update(updateInterval);
+    for (auto &m_machine : m_machines) {
+        m_machine->Update(updateInterval);
     }
 }
 
@@ -23,7 +21,7 @@ void StateController::CreateMachine(std::shared_ptr<IStateMachine> machine) {
 }
 
 void StateController::Render() {
-    for(auto iterator = m_machines.begin(); iterator != m_machines.end(); ++iterator) {
-        (*iterator)->Render();
+    for (auto &m_machine : m_machines) {
+        m_machine->Render();
     }
 }

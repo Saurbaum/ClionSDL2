@@ -10,8 +10,8 @@
 
 class World {
 public:
-    World(SDL_Renderer* sdlRenderer);
-    ~World() { } ;
+    explicit World(SDL_Renderer* sdlRenderer);
+    ~World() = default;;
 
     virtual void Render();
 

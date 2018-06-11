@@ -17,7 +17,7 @@ Player::~Player() {
 }
 
 void Player::Render() {
-    SDL_RenderCopy(m_sdlRenderer, m_texture, NULL, &m_textureRect);
+    SDL_RenderCopy(m_sdlRenderer, m_texture, nullptr, &m_textureRect);
 }
 
 bool Player::LoadTexture(std::string textureFile) {
@@ -34,8 +34,8 @@ bool Player::LoadTexture(std::string textureFile) {
 
     SDL_GetDisplayBounds(0, &displayRect);
 
-    m_xPos = displayRect.w / 2;
-    m_yPos = displayRect.h / 2;
+    m_xPos = displayRect.w / 2.0f;
+    m_yPos = displayRect.h / 2.0f;
 
     UpdateTexturePos();
 
@@ -52,23 +52,23 @@ void Player::Update(float updateInterval) {
     SDL_Rect displayRect;
     SDL_GetDisplayBounds(0, &displayRect);
 
-    if (m_xPos >= displayRect.w - (m_surface->w / 2)){
-        m_xPos = displayRect.w - (m_surface->w / 2);
+    if (m_xPos >= displayRect.w - (m_surface->w / 2.0f)){
+        m_xPos = displayRect.w - (m_surface->w / 2.0f);
         m_xVelocity *= -1;
     }
 
-    if (m_xPos <= m_surface->w / 2){
-        m_xPos = m_surface->w / 2;
+    if (m_xPos <= m_surface->w / 2.0f){
+        m_xPos = m_surface->w / 2.0f;
         m_xVelocity *= -1;
     }
 
-    if (m_yPos >= displayRect.h - (m_surface->h / 2)){
-        m_yPos = displayRect.h - (m_surface->h / 2);
+    if (m_yPos >= displayRect.h - (m_surface->h / 2.0f)){
+        m_yPos = displayRect.h - (m_surface->h / 2.0f);
         m_yVelocity *= -1;
     }
 
-    if (m_yPos <= m_surface->h / 2){
-        m_yPos = m_surface->h / 2;
+    if (m_yPos <= m_surface->h / 2.0f){
+        m_yPos = m_surface->h / 2.0f;
         m_yVelocity *= -1;
     }
 
@@ -76,6 +76,6 @@ void Player::Update(float updateInterval) {
 }
 
 void Player::UpdateTexturePos() {
-    m_textureRect.x = static_cast<int>(m_xPos - (m_surface->w / 2));
-    m_textureRect.y = static_cast<int>(m_yPos - (m_surface->h / 2));
+    m_textureRect.x = static_cast<int>(m_xPos - (m_surface->w / 2.0f));
+    m_textureRect.y = static_cast<int>(m_yPos - (m_surface->h / 2.0f));
 }
